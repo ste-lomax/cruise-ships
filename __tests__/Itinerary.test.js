@@ -1,14 +1,18 @@
 /* globals describe it expect */
 const Itinerary = require('../src/Itinerary.js');
+const Port = require('../src/Port.js');
 
 describe('Itinerary', () => {
     it('can be instantiated', () => {
         expect(new Itinerary()).toBeInstanceOf(Object);
     })
 
-    it('has ports', () => {
-        const itinerary = new Itinerary('Wigan Pier');
+    it('can have ports', () => {
+        const wiganPier = new Port('Wigan Pier');
+        const southport = new Port('Southport');
 
-        expect(itinerary.ports).toBe('Wigan Pier');
+        const itinerary = new Itinerary([wiganPier, southport]);
+
+        expect(itinerary.ports).toEqual([wiganPier, southport]);
     })
 });
